@@ -1,1 +1,6 @@
-webhook changes has been done
+Go to github repo
+click on webhook
+add webhook (add payload url as: Jenkinsurl/8080)
+click on select event(select individual event pushesh and pull request)
+click on add webhook
+webhook has been added succesfully
