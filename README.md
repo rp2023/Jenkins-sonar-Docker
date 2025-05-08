@@ -16,7 +16,7 @@ Step-01: Jenkins install:
      sudo apt install fontconfig openjdk-17-jre
      java -version
   
-  step-1.3 Install Jenkins:
+  step-1.3: Install Jenkins:
   ========================
    sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
     https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
@@ -26,25 +26,29 @@ Step-01: Jenkins install:
     sudo apt-get update
     sudo apt-get install jenkins
     
-  step-1.4 Start Jenkins:
+  step-1.4: Start Jenkins:
   ========================
    sudo systemctl enable jenkins
    sudo systemctl start jenkins
   
-  step-1.5 Verify Jenkins:
+  step-1.5: Verify Jenkins:
    ===================
    sudo systemctl status jenkins
    
- step-1.6 Open jenkins server in browser using VM public ip:
+ step-1.6: Open jenkins server in browser using VM public ip:
    ======================
    http://public-ip:8080/
    
-step-1.7 Copy jenkins admin pwd:
+step-1.7: Copy jenkins admin pwd:
 ===============================
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    
-step-1.8 Create Admin Account & Install Required Plugins in Jenkins:
+step-1.8: Create Admin Account & Install Required Plugins in Jenkins:
 ========
+
+Step-02 Install and Configure Sonarqube:
+================================
+
 
     
 
