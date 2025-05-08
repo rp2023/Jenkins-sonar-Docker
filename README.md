@@ -44,19 +44,25 @@ step-1.7: Copy jenkins admin pwd:
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    
 step-1.8: Create Admin Account & Install Required Plugins in Jenkins:
-========
+===============================================
 
 Step-02 Install and start Sonarqube:
 ================================
+
 Login second VM and change its hostname
   sudo hostnamectl set-hostname Soarqube
+  /bin/bash
   
 step-2.2: Go to sonar website
-=======================
+==================================
  https://www.sonarsource.com/products/sonarqube/downloads/
+ 
  Right click on download community edition and copy link
+ 
  wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
+ 
  step-2.3: Unzip the sonarqube file
+ ================================
   sudo apt install unzip 
   sudo unzip <zip.file>
   
@@ -79,13 +85,31 @@ step-2.2: Go to sonar website
    Step-03 Install docker 
    ==========================
   step-3.1:Login in Third VM using gitbash & change its hostname
+  ===========================================
   sudo hostnamectl set-hostname docker
+  /bin/bash
   sudo apt update -y
   sudo apt install docker.io -y
   sudo systemctl start docker
   sudo usermod -aG docker ubuntu
   docker -v
-  
+  ##########################
+  # Add Docker's official GPG key:
+  sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+# Install latest package
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin.
+
 
     
 
