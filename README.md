@@ -1,12 +1,12 @@
 # Jenkins-sonar-Docker
 Ref:https://youtu.be/361bfIvXMBI?si=Mi5moyt5iuHE7Tzp
-=======================
-Step-0 Create/Launch 3 Ec2 Ubuntu VM (t2.medium) 
+
+Step-0: Create/Launch 3 Ec2 Ubuntu VM (t2.medium) 
 Install Jenkins in first machine ,Docker second VM and sonarqube in third machine.
-Step-01 Jenkins install.
+Step-01: Jenkins install
 - Login first machine unising gitbash & install Jenkins step by step as below.
-  1) Enable 8080 Port Number in Security Group Inbound Rules.
-  2) Install java:
+  step-1.1: Enable 8080 Port Number in Security Group Inbound Rules
+  step-1.2: Install java
      sudo apt update
      sudo apt install fontconfig openjdk-17-jre
      java -version
