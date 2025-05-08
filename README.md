@@ -18,26 +18,26 @@ step-1.2: Install java:
   
 step-1.3: Install Jenkins:
 ========================
-   sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
-    https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-   echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-    /etc/apt/sources.list.d/jenkins.list > /dev/null
-    sudo apt-get update
-    sudo apt-get install jenkins
+      sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+      https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+      echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+      https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+     /etc/apt/sources.list.d/jenkins.list > /dev/null
+     sudo apt-get update
+     sudo apt-get install jenkins
     
 step-1.4: Start Jenkins:
 ========================
-   sudo systemctl enable jenkins
-   sudo systemctl start jenkins
+    sudo systemctl enable jenkins
+    sudo systemctl start jenkins
   
 step-1.5: Verify Jenkins:
 ===================
-   sudo systemctl status jenkins
+    sudo systemctl status jenkins
    
 step-1.6: Open jenkins server in browser using VM public ip:
 ======================
-   http://public-ip:8080/
+    http://public-ip:8080/
    
 step-1.7: Copy jenkins admin pwd:
 ===============================
@@ -50,68 +50,68 @@ Step-02 Install and start Sonarqube:
 ================================
 
 Login second VM and change its hostname
-  sudo hostnamectl set-hostname Soarqube
-  /bin/bash
+    sudo hostnamectl set-hostname Soarqube
+    /bin/bash
   
 step-2.2: Go to sonar website
 ==================================
- https://www.sonarsource.com/products/sonarqube/downloads/
+       https://www.sonarsource.com/products/sonarqube/downloads/
  
  Right click on download community edition and copy link
- 
- wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
+ ==================================================
+      wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
  
  step-2.3: Unzip the sonarqube file
  ================================
-  sudo apt install unzip 
-  sudo unzip <zip.file>
+        sudo apt install unzip 
+        sudo unzip <zip.file>
   
   step-2.4: Start the sonar server
   =============================
-  cd sonarqube-9.0.9/
-  cd bin
-  ls
-  cd linux-x86-64
-  ls
-  sonar.sh
-  ./sonar.sh
-  sonar.sh {start|stop|force stop| console|restart|status|dump}
+         cd sonarqube-9.0.9/
+         cd bin
+         ls
+         cd linux-x86-64
+         ls
+         sonar.sh
+         ./sonar.sh
+         sonar.sh {start|stop|force stop| console|restart|status|dump}
   
   step-2.5: enable inbound 9000 port number in security group
   =================================================
-  https://public-ip:9000 
-   Default usr:admin, pass:admin.
+       https://public-ip:9000 
+      Default usr:admin, pass:admin.
 
    Step-03 Install docker 
    ==========================
   step-3.1:Login in Third VM using gitbash & change its hostname
   ===========================================
-  sudo hostnamectl set-hostname docker
-  /bin/bash
-  sudo apt update -y
-  sudo apt install docker.io -y
-  sudo systemctl start docker
-  sudo usermod -aG docker ubuntu
-  docker -v
+      sudo hostnamectl set-hostname docker
+      /bin/bash
+      sudo apt update -y
+      sudo apt install docker.io -y
+      sudo systemctl start docker
+      sudo usermod -aG docker ubuntu
+      docker -v
 .
   # Add Docker's official GPG key:
   ======================================
-  sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
+     sudo apt-get update
+     sudo apt-get install ca-certificates curl
+     sudo install -m 0755 -d /etc/apt/keyrings
+     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+     sudo chmod a+r /etc/apt/keyrings/docker.asc
 # Add the repository to Apt sources:
 =================================
-echo \
+  echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
+  sudo apt-get update
 
 # Install latest package
-=============================
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin.
+
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin.
 
 
     
